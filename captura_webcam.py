@@ -44,7 +44,9 @@ def main():
                     mp_drawing.draw_landmarks(
                         image=frame,
                         landmark_list=face_landmarks,
-                        connections=mp_face_mesh.FACEMESH_CONTOURS
+                        connections=mp_face_mesh.FACEMESH_CONTOURS,
+                        landmark_drawing_spec=mp_drawing.DrawingSpec(color=(170, 100, 80), thickness=1, circle_radius=1),
+                        connection_drawing_spec=mp_drawing.DrawingSpec(color=(100, 200, 0), thickness=1, circle_radius=1),
                     )
 
             # Mostra a imagem
