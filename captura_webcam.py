@@ -18,8 +18,11 @@ with mp_face_mesh.FaceMesh(min_detection_confidence=0.5, min_tracking_confidence
         frame = cv2.cvtColor(frame, cv2.COLOR_BAYER_BG2BGR)
         face_mesh_output = facemesh.process(frame)
         frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
-        for face_landmarks in face_mesh_output.multi_face_landmarks:
-            mp_drawing.draw_landmarks(frame, face_landmarks, mp_face_mesh.FACEMESH_CONTOURS)
+        try:
+            for face_landmarks in face_mesh_output.multi_face_landmarks:
+                        mp_drawing.draw_landmarks(frame, face_landmarks, mp_face_mesh.FACEMESH_CONTOURS)
+        except:
+             pass
 
         cv2.imshow("Camera", frame)
         key = cv2.waitKey(1)
