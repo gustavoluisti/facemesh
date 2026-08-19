@@ -5,6 +5,10 @@ import mediapipe as mp
 mp_drawing = mp.solutions.drawing_utils
 mp_face_mesh = mp.solutions.face_mesh
 
+p_left_eye = [385, 380, 387, 373, 362, 263]
+p_right_eye = [160, 144, 158, 153, 33, 133]
+p_eyes = p_left_eye + p_right_eye
+
 
 def main():
     # Abre a webcam
@@ -48,6 +52,8 @@ def main():
                         landmark_drawing_spec=mp_drawing.DrawingSpec(color=(170, 100, 80), thickness=1, circle_radius=1),
                         connection_drawing_spec=mp_drawing.DrawingSpec(color=(100, 200, 0), thickness=1, circle_radius=1),
                     )
+                    face = face_landmarks.landmark
+                    print(face)
 
             # Mostra a imagem
             cv2.imshow("Camera", frame)
